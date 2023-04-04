@@ -15,7 +15,9 @@ var horizontalStack1:UIStackView = {
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.alignment = .fill
-        //stack.spacing = 20
+        stack.spacing = 20
+    stack.backgroundColor = .white
+    stack.layer.cornerRadius = 5
         return stack
     }()
 
@@ -25,7 +27,7 @@ var horizontalStack2:UIStackView = {
     stack.axis = .horizontal
     stack.distribution = .fill
     stack.alignment = .fill
-    //stack.spacing = 20
+    stack.spacing = 20
     return stack
 }()
 
@@ -35,7 +37,7 @@ var horizontalStack3:UIStackView = {
     stack.axis = .horizontal
     stack.distribution = .fill
     stack.alignment = .fill
-    //stack.spacing = 20
+    stack.spacing = 20
     return stack
 }()
 
@@ -43,9 +45,9 @@ var horizontalStack3:UIStackView = {
        
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.distribution = .fill
+        stack.distribution = .fillEqually
         stack.alignment = .fill
-        //stack.spacing = 20
+        stack.spacing = 10
         return stack
     }()
     
@@ -68,7 +70,7 @@ var imageView3 : UIImageView = {
 var label2:UILabel = {
     let label = UILabel()
     label.adjustsFontSizeToFitWidth = true
-    label.font = UIFont.systemFont(ofSize: 20)
+    label.font = UIFont.systemFont(ofSize: 30)
     label.text = "Real Madrid"
     return label
 }()
@@ -84,7 +86,7 @@ var label3:UILabel = {
 var label4:UILabel = {
     let label = UILabel()
     label.adjustsFontSizeToFitWidth = true
-    label.font = UIFont.systemFont(ofSize: 20)
+    label.font = UIFont.systemFont(ofSize: 15)
     label.text = "Mar 31"
     return label
 }()
@@ -92,8 +94,8 @@ var label4:UILabel = {
 var label5:UILabel = {
     let label = UILabel()
     label.adjustsFontSizeToFitWidth = true
-    label.font = UIFont.systemFont(ofSize: 20)
-    label.text = "FC Barcelona"
+    label.font = UIFont.systemFont(ofSize: 30)
+    label.text = "FCB"
     return label
 }()
     
@@ -124,8 +126,14 @@ var label5:UILabel = {
             horizontalStack1.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             horizontalStack1.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             horizontalStack1.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            
+            //verticalStack.heightAnchor.constraint(equalToConstant: 50),
+            //horizontalStack1.heightAnchor.constraint(equalToConstant: 100),
+            
             imageView2.heightAnchor.constraint(equalToConstant: 20),
-            imageView3.heightAnchor.constraint(equalToConstant: 20)
+            imageView2.widthAnchor.constraint(equalToConstant: 20),
+            imageView3.heightAnchor.constraint(equalToConstant: 20),
+            imageView3.widthAnchor.constraint(equalToConstant: 20)
             
         ])
         

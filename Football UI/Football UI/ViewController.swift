@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var mainStack:UIStackView = {
            
             let stack = UIStackView()
-            stack.axis = .horizontal
+            stack.axis = .vertical
             stack.distribution = .fill
             stack.alignment = .fill
             //stack.spacing = 20
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     var imageView1 : UIImageView = {
             let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
-        //imageView.image = UIImage(systemName: "checkmark.circle")
+        imageView.image = UIImage(systemName: "star.fill")
 
             return imageView
         }()
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     var label1:UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 40)
         label.text = "Football Scores"
         return label
     }()
@@ -53,12 +53,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .white
         
         
-        //hStack.addArrangedSubview(imageView1)
+        hStack.addArrangedSubview(imageView1)
         hStack.addArrangedSubview(label1)
         mainStack.addArrangedSubview(hStack)
+        mainStack.addArrangedSubview(tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -69,23 +70,19 @@ class ViewController: UIViewController {
         self.view.addSubview(mainStack)
         
         mainStack.translatesAutoresizingMaskIntoConstraints = false
-        //imageView1.translatesAutoresizingMaskIntoConstraints = false
+        imageView1.translatesAutoresizingMaskIntoConstraints = false
         hStack.translatesAutoresizingMaskIntoConstraints = false
         
         let safeArea = self.view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             
-            hStack.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
-            hStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
-            hStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
-            hStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-            
+            hStack.bottomAnchor.constraint(equalTo: mainStack.topAnchor, constant: 100),
             mainStack.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             mainStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
             mainStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
             mainStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-            imageView1.heightAnchor.constraint(equalToConstant: 20)
+            imageView1.heightAnchor.constraint(equalToConstant: 70)
             
         ])
         
@@ -95,7 +92,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 extension ViewController: UITableViewDataSource{
